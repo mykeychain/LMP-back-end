@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from flask.templating import render_template
 from helpers import url_constructor, extract_and_parse, sort_func, format_date
 from flask_cors import CORS
 import requests, zipfile, io
@@ -9,13 +8,6 @@ app = Flask(__name__)
 CORS(app)
 
 LMP_BASE_URL = "http://oasis.caiso.com/oasisapi/SingleZip?queryname=PRC_LMP&version=1"
-
-@app.route("/")
-def show_homepage(): 
-    """ Displays test homepage. """
-    
-    return render_template("./index.html")
-
 
 @app.route("/api/LMP", methods=["POST"])
 def get_zip_file(): 
